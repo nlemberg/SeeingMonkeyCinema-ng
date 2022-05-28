@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Typography, Box, IconButton, Tooltip } from "@mui/material";
-import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+// import { Link } from "react-router-dom";
+import { Typography, Box } from "@mui/material";
+// import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
+// import PersonPinIcon from "@mui/icons-material/PersonPin";
+// import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
 const WelcomeHome = () => {
   //   let employeeIcon = null;
