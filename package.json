@@ -1,0 +1,11 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "manages movies, members and subscriptions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/services/server.js"
+  },
+  "author": "nlemberg",
+  "license": "ISC"
+}
