@@ -1,9 +1,9 @@
 import "./App.css";
 import React from "react";
-import WelcomeHome from "./components/welcomeHome";
+import MainRouter from "./components/mainRouter";
 
 const App = () => {
-  return <WelcomeHome />;
+  return <MainRouter />;
 };
 
 export default App;
