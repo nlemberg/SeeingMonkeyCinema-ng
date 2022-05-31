@@ -4,7 +4,9 @@ const cors = require("cors");
 const { populateMoviesDB } = require("./utils/populateDBs");
 
 const app = express();
-const port = process.env.PORT || 8000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const db = process.env.MONGO_URI || require("./config/keys").mongoURI;
 
@@ -15,11 +17,10 @@ mongoose
 
 populateMoviesDB();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use("/movies", require("./routes/movieController"));
 
+const port = process.env.PORT || 8000;
+
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
