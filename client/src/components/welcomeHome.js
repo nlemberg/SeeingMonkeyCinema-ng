@@ -1,7 +1,7 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-import { Typography, Box } from "@mui/material";
-// import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
+import { Link } from "react-router-dom";
+import { Typography, Box, Tooltip, IconButton } from "@mui/material";
+import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 // import PersonPinIcon from "@mui/icons-material/PersonPin";
 // import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
@@ -42,12 +42,13 @@ const WelcomeHome = () => {
         Now where do you wanna go?{" "}
       </Typography>
       <Box display="flex">
-        {/* <Tooltip title="Movies">
-          <IconButton component={Link} to="/home/movies/allMovies">
+        <Tooltip title="Movies">
+          <IconButton component={Link} to="movies/allMovies">
+            {/* <IconButton component={Link} to="/home/movies/allMovies"> */}
             <LocalMoviesIcon className="mainPgIcon" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Members">
+        {/* <Tooltip title="Members">
           <IconButton component={Link} to="/home/subscriptions/allMembers">
             <PersonPinIcon className="mainPgIcon" />
           </IconButton>

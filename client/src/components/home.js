@@ -4,14 +4,15 @@ import {
   Box,
   AppBar,
   Toolbar,
-  //   Button,
+  Button,
   IconButton,
   Tooltip,
 } from "@mui/material";
 // import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from "@mui/icons-material/Home";
 import WelcomeHome from "./welcomeHome";
-// import Movies from "./movies/movies";
+import Movies from "./movies/movies";
+import Movie from "./movies/movie";
 // import Subscriptions from "./subscriptions/subscriptions";
 // import Employees from "./employees/employees";
 // import HelloUser from "./login/helloUser";
@@ -30,13 +31,20 @@ const Home = (props) => {
           <Toolbar>
             <Box sx={{ flexGrow: 4 }}>
               <Tooltip title="Home">
-                <IconButton component={Link} to="/" edge="start">
+                <IconButton component={Link} to="welcomeHome" edge="start">
                   <HomeIcon fontSize="large" htmlColor="white" />
                 </IconButton>
               </Tooltip>
-              {/* <Button variant="text" component={Link} to={`${props.match.url}/movies/allMovies`} >Movies</Button>
-                            <Button variant="text" component={Link} to={`${props.match.url}/subscriptions/allMembers`} >Subscriptions</Button>
-                            {employeeManagement} */}
+              <Button
+                variant="text"
+                component={Link}
+                to={"movies/allMovies"}
+                // to={`${props.match.url}/movies/allMovies`}
+              >
+                Movies
+              </Button>
+              {/* <Button variant="text" component={Link} to={`${props.match.url}/subscriptions/allMembers`} >Subscriptions</Button> */}
+              {/* {employeeManagement} */}
             </Box>
             <Box>{/* <HelloUser /> */}</Box>
             <Box>
@@ -46,14 +54,15 @@ const Home = (props) => {
             </Box>
           </Toolbar>
         </AppBar>
-        {/* <WelcomeHome /> */}
       </Box>
+      {/* <WelcomeHome /> */}
       <Routes>
-        <Route path={`/`} element={<WelcomeHome />} />
-        {/* <Route path={`${props.match.url}/movies`} component={Movies} />
-                <Route path={`${props.match.url}/subscriptions`} component={Subscriptions} />
-                <Route path={`${props.match.url}/employees`} component={Employees} />
-                <Route path={`${props.match.url}/access-denied`} component={AccessDenied} /> */}
+        <Route path="*" element={<WelcomeHome />} />
+        <Route path="movies/Allmovies" element={<Movies />} />
+        <Route path="movies/Allmovies/:id" element={<Movie />} />
+        {/* <Route path={`${props.match.url}/subscriptions`} component={Subscriptions} /> */}
+        {/* <Route path={`${props.match.url}/employees`} component={Employees} /> */}
+        {/* <Route path={`${props.match.url}/access-denied`} component={AccessDenied} /> */}
       </Routes>
     </>
   );
