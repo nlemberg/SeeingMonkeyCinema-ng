@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-// import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import store from "./store";
-// import theme from "./theme";
+import theme from "./theme";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -14,9 +14,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <ThemeProvider theme={theme}>      */}
-        <App />
-        {/* </ThemeProvider> */}
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
