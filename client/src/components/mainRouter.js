@@ -12,7 +12,7 @@ import { moviesGetAll } from "../redux/actions/movieActions";
 // import { membersGetAll } from "../redux/actions/memberActions";
 // import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
 import { Box } from "@mui/material";
-import WelcomeHome from "./welcomeHome";
+// import WelcomeHome from "./welcomeHome";
 
 const MainRouter = () => {
   const dispatch = useDispatch();

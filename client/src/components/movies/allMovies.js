@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+// import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  Box,
+  // Box,
   Container,
-  Fab,
+  // Fab,
   Grid,
-  TextField,
-  Tooltip,
-  InputAdornment,
+  // TextField,
+  // Tooltip,
+  // InputAdornment,
 } from "@mui/material";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import SearchIcon from "@mui/icons-material/Search";
+// import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+// import SearchIcon from "@mui/icons-material/Search";
 import Movie from "./movie";
 
 const AllMovies = () => {
