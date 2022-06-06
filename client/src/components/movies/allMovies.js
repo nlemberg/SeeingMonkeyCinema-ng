@@ -16,7 +16,6 @@ import Movie from "./movie";
 
 const AllMovies = () => {
   const movies = useSelector((state) => state.movies);
-  console.log(movies[0]);
   //   const movies = useSelector((state) => state.movies);
   //   const [searchTerm, setSearchTerm] = useState("");
 
