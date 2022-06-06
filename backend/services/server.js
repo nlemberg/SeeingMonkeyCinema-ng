@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { populateMoviesDB } = require("./utils/populateDBs");
+const { populateMoviesDB, populateMembersDB } = require("./utils/populateDBs");
 
 const app = express();
 app.use(express.json());
@@ -16,8 +16,10 @@ mongoose
   .catch((err) => console.log(err));
 
 populateMoviesDB();
+populateMembersDB();
 
 app.use("/movies", require("./routes/movieController"));
+app.use("/members", require("./routes/memberController"));
 
 const port = process.env.PORT || 8000;
 
