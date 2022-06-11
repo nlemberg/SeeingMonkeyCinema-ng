@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Box, Tooltip, IconButton } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-// import PersonPinIcon from "@mui/icons-material/PersonPin";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
 // import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 
 const WelcomeHome = () => {
@@ -48,12 +48,12 @@ const WelcomeHome = () => {
             <LocalMoviesIcon className="mainPgIcon" />
           </IconButton>
         </Tooltip>
-        {/* <Tooltip title="Members">
-          <IconButton component={Link} to="/home/subscriptions/allMembers">
+        <Tooltip title="Members">
+          <IconButton component={Link} to="members/allMembers">
             <PersonPinIcon className="mainPgIcon" />
           </IconButton>
         </Tooltip>
-        {employeeIcon} */}
+        {/* {employeeIcon} */}
       </Box>
     </Box>
   );

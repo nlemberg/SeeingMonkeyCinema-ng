@@ -22,7 +22,6 @@ const Movie = (props) => {
   // const dispatch = useDispatch()
   //   const movies = useSelector((state) => state.movies);
   const movies = useSelector((state) => state.movies);
-  console.log(movies[0]);
   const { id } = useParams();
   let movieId;
   let movie;
@@ -38,7 +37,6 @@ const Movie = (props) => {
     movieId = props.movie._id;
   }
 
-  console.log(movies[0]);
   // const deleteMovie = () => {
   //     if (window.confirm("Are you sure you want to delete this movie?")) {
   //         dispatch(moviesDelete(movieId))
