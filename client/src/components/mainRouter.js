@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 // import { combinedEmployeesCreateAll } from "../redux/actions/combinedEmployeeActions";
 import { moviesGetAll } from "../redux/actions/movieActions";
 import { membersGetAll } from "../redux/actions/memberActions";
-// import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
+import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
 import { Box } from "@mui/material";
 // import WelcomeHome from "./welcomeHome";
 
@@ -25,7 +25,7 @@ const MainRouter = () => {
       // await dispatch(permissionsGetAll())
       await dispatch(moviesGetAll());
       await dispatch(membersGetAll());
-      // await dispatch(subscriptionsGetAll())
+      await dispatch(subscriptionsGetAll());
       // }
       // await getDbData();
       // await dispatch(combinedEmployeesCreateAll())
