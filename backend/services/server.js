@@ -20,6 +20,7 @@ populateMembersDB();
 
 app.use("/movies", require("./routes/movieController"));
 app.use("/members", require("./routes/memberController"));
+app.use("/subscriptions", require("./routes/subscriptionController"));
 
 const port = process.env.PORT || 8000;
 
