@@ -7,7 +7,10 @@ const {
   editMember,
   //   deleteMember,
 } = require("../utils/memberUtils");
-// const { findSubscriptionByMemberID, addOrEditSubscription } = require("../services/subscriptionServices")
+const {
+  findSubscriptionByMemberID,
+  addOrEditSubscription,
+} = require("../utils/subscriptionUtils");
 const axios = require("axios");
 
 const router = express.Router();
@@ -31,28 +34,28 @@ router.route("/:id").get(async (req, res) => {
   }
 });
 
-// // get subscription by member ID
-// router.route("/:id").get(async (req, res) => {
-//   try {
-//     const memberID = mongoose.Types.ObjectId(req.params.id);
-//     const subscription = await findSubscriptionByMemberID(memberID);
-//     return res.json(subscription);
-//   } catch (error) {
-//     return res.json(error);
-//   }
-// })
+// get subscription by member ID
+router.route("/:id").get(async (req, res) => {
+  try {
+    const memberID = mongoose.Types.ObjectId(req.params.id);
+    const subscription = await findSubscriptionByMemberID(memberID);
+    return res.json(subscription);
+  } catch (error) {
+    return res.json(error);
+  }
+});
 
-// // create new subscription for member, or add movie to existing subscription
-// router.route("/:id").post(async (req, res) => {
-//   try {
-//     const memberID = req.params.id //mongoose.Types.ObjectId(req.params.id);
-//     const movieObj = req.body
-//     const subscription = await addOrEditSubscription(memberID, movieObj);
-//     return res.json(subscription);
-//   } catch (error) {
-//     return res.json(error);
-//   }
-// })
+// create new subscription for member, or add movie to existing subscription
+router.route("/:id").post(async (req, res) => {
+  try {
+    const memberID = req.params.id; //mongoose.Types.ObjectId(req.params.id);
+    const movieObj = req.body;
+    const subscription = await addOrEditSubscription(memberID, movieObj);
+    return res.json(subscription);
+  } catch (error) {
+    return res.json(error);
+  }
+});
 
 router.route("/").post(async (req, res) => {
   try {
