@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { subscriptionsGetAll } from "./subscriptionActions";
+import { subscriptionsGetAll } from "./subscriptionActions";
 
 const url =
   process.env.NODE_ENV === "production"
@@ -23,11 +23,11 @@ const membersEdit = (member) => async (dispatch) => {
   alert(success);
 };
 
-// const membersEditSubscription = (memberId, movie) => async (dispatch) => {
-//     const { data: success } = await axios.post(`${url}/${memberId}`, movie)
-//     await dispatch(subscriptionsGetAll())
-//     alert(success)
-// }
+const membersEditSubscription = (memberId, movie) => async (dispatch) => {
+  const { data: success } = await axios.post(`${url}/${memberId}`, movie);
+  await dispatch(subscriptionsGetAll());
+  alert(success);
+};
 
 // const membersDelete = (id) => async (dispatch) => {
 //     const { data: success } = await axios.delete(`${url}/${id}`)
@@ -40,6 +40,6 @@ export {
   membersGetAll,
   membersAddNew,
   membersEdit,
-  //   membersEditSubscription,
+  membersEditSubscription,
   //   membersDelete,
 };

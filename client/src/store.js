@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 // import permissions from "./redux/reducers/permissionReducer"
 import movies from "./redux/reducers/movieReducer";
 import members from "./redux/reducers/memberReducer";
-// import subscriptions from "./redux/reducers/subscruptionReducer"
+import subscriptions from "./redux/reducers/subscriptionReducer";
 // import combinedEmployees from "./redux/reducers/combinedEmployeeReducer"
 
 const rootReducer = combineReducers({
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   // permissions,
   movies,
   members,
-  // subscriptions,
+  subscriptions,
   // combinedEmployees,
 });
 

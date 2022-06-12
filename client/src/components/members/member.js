@@ -16,7 +16,7 @@ import {
   //   List,
   Typography,
 } from "@mui/material";
-// import MoviesWatched from "./moviesWatched";
+import MoviesWatched from "./moviesWatched";
 
 const Member = (props) => {
   // const dispatch = useDispatch()
@@ -105,7 +105,7 @@ const Member = (props) => {
           }}
         >
           <CardContent sx={{ paddingTop: 0 }}>
-            {/* <MoviesWatched memberId={memberId} /> */}
+            <MoviesWatched memberId={memberId} />
           </CardContent>
         </Box>
       </Card>
