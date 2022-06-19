@@ -1,14 +1,12 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 // import { Routes, Route, Link, useHistory } from "react-router-dom";
 import { Button, AppBar, Toolbar } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import AllMovies from "./allMovies";
-import Movie from "./movie";
 // import AddMovie from "./addMovie";
 // import EditMovie from "./editMovie";
 
-const Movies = (props) => {
+const Movies = () => {
   // const history = useHistory()
 
   // let addMovieLink = null;
@@ -34,13 +32,7 @@ const Movies = (props) => {
           {/* {addMovieLink} */}
         </Toolbar>
       </AppBar>
-      <AllMovies />
-      <Routes>
-        <Route path="allMovies" element={<AllMovies />} />
-        {/* <Route path="/home/movies/addMovie" element={<AddMovie/>} /> */}
-        {/* <Route path="/home/movies/editMovie/:id" element={<EditMovie/>} /> */}
-        <Route path="allMovies/:id" element={<Movie />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 };

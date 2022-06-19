@@ -43,13 +43,13 @@ const WelcomeHome = () => {
       </Typography>
       <Box display="flex">
         <Tooltip title="Movies">
-          <IconButton component={Link} to="movies/allMovies">
+          <IconButton component={Link} to="../movies/allMovies">
             {/* <IconButton component={Link} to="/home/movies/allMovies"> */}
             <LocalMoviesIcon className="mainPgIcon" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Members">
-          <IconButton component={Link} to="members/allMembers">
+          <IconButton component={Link} to="../members/allMembers">
             <PersonPinIcon className="mainPgIcon" />
           </IconButton>
         </Tooltip>

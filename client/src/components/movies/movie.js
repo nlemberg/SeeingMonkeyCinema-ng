@@ -20,7 +20,6 @@ import {
 
 const Movie = (props) => {
   // const dispatch = useDispatch()
-  //   const movies = useSelector((state) => state.movies);
   const movies = useSelector((state) => state.movies);
   const { id } = useParams();
   let movieId;
@@ -65,8 +64,7 @@ const Movie = (props) => {
           </Grid>
           <Grid item xs={7} flexGrow="1" maxHeight={250} overflow="auto">
             <CardContent>
-              <CardActionArea component={Link} to={`${movieId}`}>
-                {/* <CardActionArea component={Link} to={`/home/movies/${movieId}`}> */}
+              <CardActionArea component={Link} to={`../${movieId}`}>
                 <Typography variant="h6">
                   {movie.name}, {movie.premiered.slice(0, 4)}
                 </Typography>
