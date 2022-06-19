@@ -12,7 +12,13 @@ import { moviesGetAll } from "../redux/actions/movieActions";
 import { membersGetAll } from "../redux/actions/memberActions";
 import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
 import { Box } from "@mui/material";
-// import WelcomeHome from "./welcomeHome";
+import WelcomeHome from "./welcomeHome";
+import Movies from "./movies/movies";
+import AllMovies from "./movies/allMovies";
+import Movie from "./movies/movie";
+import Members from "./members/members";
+import AllMembers from "./members/allMembers";
+import Member from "./members/member";
 
 const MainRouter = () => {
   const dispatch = useDispatch();
@@ -39,7 +45,17 @@ const MainRouter = () => {
         {/* <Route path="/" exact component={Login} /> */}
         {/* <Route path="/createAccount" component={CreateAccount} /> */}
         {/* <Route path="/home" component={Home} /> */}
-        <Route path="*" element={<Home />} />
+        <Route path="/" element={<Home />}>
+          <Route path="welcomeHome" element={<WelcomeHome />} />
+          <Route path="movies" element={<Movies />}>
+            <Route path="allMovies" element={<AllMovies />} />
+            <Route path=":id" element={<Movie />} />
+          </Route>
+          <Route path="members" element={<Members />}>
+            <Route path="allMembers" element={<AllMembers />} />
+            <Route path=":id" element={<Member />} />
+          </Route>
+        </Route>
         {/* <Route path="welcomeHome" element={<WelcomeHome />} /> */}
         <Route> 404 Not Found! </Route>
       </Routes>

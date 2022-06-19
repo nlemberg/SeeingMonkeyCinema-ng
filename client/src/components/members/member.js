@@ -70,7 +70,7 @@ const Member = (props) => {
             justifyContent: "space-between",
           }}
         >
-          <CardActionArea component={Link} to={`${memberId}`}>
+          <CardActionArea component={Link} to={`../${memberId}`}>
             <CardHeader
               avatar={
                 <Avatar

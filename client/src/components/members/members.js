@@ -1,14 +1,12 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 // import { Routes, Route, Link, useHistory } from "react-router-dom";
 import { Button, AppBar, Toolbar } from "@mui/material";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
-import AllMembers from "./allMembers";
 // import AddMember from "./addMember";
 // import EditMember from "./editMember";
-import Member from "./member";
 
-const Members = (props) => {
+const Members = () => {
   // const history = useHistory()
 
   // let addMemberLink = null
@@ -32,13 +30,7 @@ const Members = (props) => {
           {/* {addMemberLink} */}
         </Toolbar>
       </AppBar>
-      <AllMembers />
-      <Routes>
-        <Route path="allMembers" element={<AllMembers />} />
-        {/* <Route path="addMember" element={<AddMember/>} /> */}
-        {/* <Route path="editMember/:id" element={<EditMember/>} /> */}
-        <Route path="allMembers/:id" element={<Member />} />
-      </Routes>
+      <Outlet />
     </>
   );
 };
