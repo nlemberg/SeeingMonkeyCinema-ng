@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, FormControl, MenuItem, TextField } from "@mui/material";
 import { membersEditSubscription } from "../../redux/actions/memberActions";
 
-const SubscribeToNewMovie = (props) => {
+const SubscribeToNewMovie = ({ watchedIdsArr, memberId, callback }) => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
   const moviesNotWatched = movies.filter((movie) =>
-    props.watchedIdsArr.includes(movie._id) ? null : movie
+    watchedIdsArr.includes(movie._id) ? null : movie
   );
   const movieOption = moviesNotWatched.map((movie) => (
     <MenuItem key={movie._id + "available"} value={movie._id}>
@@ -20,26 +20,24 @@ const SubscribeToNewMovie = (props) => {
   });
   const [isValid, setIsValid] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!movieToWatch.movieID || !movieToWatch.dateWatched) {
       alert("Please select both movie and date.");
     } else {
-      setIsValid(!isValid);
+      await setIsValid(!isValid);
+      await callback(false);
     }
   };
 
   useEffect(() => {
     async function subscribeToMovie() {
       if (isValid) {
-        await dispatch(
-          membersEditSubscription(props.memberId, { ...movieToWatch })
-        );
-        props.callback(false);
+        await dispatch(membersEditSubscription(memberId, { ...movieToWatch }));
       }
     }
     subscribeToMovie();
-  }, [isValid, dispatch]);
+  }, [isValid, dispatch, movieToWatch, memberId]);
 
   return (
     <Box component="form" onSubmit={handleSubmit} display="flex">
