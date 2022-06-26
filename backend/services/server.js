@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const { errorHandler } = require("./middleware/errorMiddleware");
 const { populateMoviesDB, populateMembersDB } = require("./utils/populateDBs");
 
 const app = express();
@@ -21,6 +22,9 @@ populateMembersDB();
 app.use("/movies", require("./routes/movieController"));
 app.use("/members", require("./routes/memberController"));
 app.use("/subscriptions", require("./routes/subscriptionController"));
+app.use("/employees", require("./routes/employeeController"));
+
+app.use(errorHandler);
 
 const port = process.env.PORT || 8000;
 
