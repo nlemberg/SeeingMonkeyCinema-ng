@@ -45,13 +45,14 @@ const Login = () => {
     dispatch(login(userData));
   };
 
-  //   const loginAsGuest = (e) => {
-  //     e.preventDefault();
-  //     const userData = {
-  //       username: "Guest",
-  //     };
-  //     dispatch(login(userData));
-  //   };
+  const loginAsGuest = (e) => {
+    e.preventDefault();
+    const userData = {
+      username: "Guest",
+      password: "",
+    };
+    dispatch(login(userData));
+  };
 
   return (
     <Container>
@@ -92,9 +93,9 @@ const Login = () => {
             <Button type="submit" className="btnLogin">
               Log in
             </Button>
-            {/* <Button onClick={loginAsGuest} className="btnLogin">
+            <Button onClick={loginAsGuest} className="btnLogin">
               Log in as Guest
-            </Button> */}
+            </Button>
             {/* <Typography>
               {" "}
               New here?{" "}
