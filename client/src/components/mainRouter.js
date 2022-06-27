@@ -19,6 +19,7 @@ import Movie from "./movies/movie";
 import Members from "./members/members";
 import AllMembers from "./members/allMembers";
 import Member from "./members/member";
+import Login from "./login";
 
 const MainRouter = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const MainRouter = () => {
             <Route path=":id" element={<Member />} />
           </Route>
         </Route>
-        {/* <Route path="welcomeHome" element={<WelcomeHome />} /> */}
+        <Route path="/login" element={<Login />} />
         <Route> 404 Not Found! </Route>
       </Routes>
     </Box>

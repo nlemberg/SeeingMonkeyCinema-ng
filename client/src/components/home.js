@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -8,8 +8,10 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-// import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/actions/authActions";
 // import Employees from "./employees/employees";
 // import HelloUser from "./login/helloUser";
 // import AccessDenied from "./accessDenied";
@@ -19,6 +21,20 @@ const Home = () => {
   // if (sessionStorage.getItem("employee") === "Admin") {
   //     employeeManagement = <Button variant="text" component={Link} to={`${props.match.url}/employees/allEmployees`} >Employees</Button>
   // }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  });
+
+  const onLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <>
@@ -46,9 +62,16 @@ const Home = () => {
             </Box>
             <Box>{/* <HelloUser /> */}</Box>
             <Box>
-              {/* <Tooltip title="Log Out" >
-                                <IconButton component={Link} to="/" edge="end" sx={{ marginLeft: 1 }} ><LogoutIcon/></IconButton>
-                            </Tooltip> */}
+              <Tooltip title="Log Out">
+                <IconButton
+                  component={Button}
+                  onClick={onLogout}
+                  edge="end"
+                  sx={{ marginLeft: 1 }}
+                >
+                  <LogoutIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
           </Toolbar>
         </AppBar>
