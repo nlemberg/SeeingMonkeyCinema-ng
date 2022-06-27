@@ -93,7 +93,8 @@ const Login = () => {
             <Button type="submit" className="btnLogin">
               Log in
             </Button>
-            <Button onClick={loginAsGuest} className="btnLogin">
+            <Typography variant="overline"> - OR - </Typography>
+            <Button onClick={loginAsGuest} variant="outlined" color="warning">
               Log in as Guest
             </Button>
             {/* <Typography>
