@@ -28,7 +28,7 @@ const Member = (props) => {
 
   let memberId;
   let member;
-  let navlnk;
+  let navLink;
 
   // let deleteButton = null;
   // let editButton = null;
@@ -36,17 +36,17 @@ const Member = (props) => {
   if (id) {
     memberId = id;
     member = members.find((member) => member._id === id);
-    navlnk = "../allMembers";
+    navLink = "../allMembers";
   } else if (props.member) {
     member = props.member;
     memberId = props.member._id;
-    navlnk = ".";
+    navLink = ".";
   }
 
   const deleteMember = () => {
     if (window.confirm("Are you sure you want to delete this member?")) {
       dispatch(membersDelete(memberId));
-      navigate(navlnk);
+      navigate(navLink);
     }
   };
 

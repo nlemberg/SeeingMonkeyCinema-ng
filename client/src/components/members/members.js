@@ -24,9 +24,12 @@ const Members = () => {
 
   useEffect(() => {
     if (!user.permissions.viewSubscriptions) {
-      navigate("../accessDenied");
+      alert(
+        "Oops. You don't have permission to view this page. Please contact your system Admin"
+      );
+      navigate("../welcomeHome");
     }
-  });
+  }, [user, navigate]);
 
   return (
     <>

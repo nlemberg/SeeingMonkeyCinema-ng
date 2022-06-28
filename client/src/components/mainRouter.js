@@ -22,6 +22,8 @@ import Member from "./members/member";
 import Login from "./login";
 import AddMember from "./members/addMember";
 import EditMember from "./members/editMember";
+import AddMovie from "./movies/addMovie";
+import EditMovie from "./movies/editMovie";
 
 const MainRouter = () => {
   // const dispatch = useDispatch();
@@ -48,6 +50,8 @@ const MainRouter = () => {
           <Route path="movies" element={<Movies />}>
             <Route path="allMovies" element={<AllMovies />} />
             <Route path=":id" element={<Movie />} />
+            <Route path="addMovie" element={<AddMovie />} />
+            <Route path="editMovie/:id" element={<EditMovie />} />
           </Route>
           <Route path="members" element={<Members />}>
             <Route path="allMembers" element={<AllMembers />} />
