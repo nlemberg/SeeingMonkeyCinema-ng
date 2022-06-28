@@ -4,7 +4,7 @@ const {
   getMovieById,
   addMovie,
   editMovie,
-  //   deleteMovie,
+  deleteMovie,
 } = require("../utils/movieUtils");
 // const { deleteMovieFromSubscriptions } = require("../services/subscriptionServices")
 
@@ -50,14 +50,14 @@ router.route("/:id").put(async (req, res) => {
   }
 });
 
-// router.route("/:id").delete(async (req, res) => {
-//   const id = req.params.id;
-//   try {
-//     const result = await deleteMovie(id);
-//     return res.json(result);
-//   } catch (error) {
-//     return res.json(error);
-//   }
-// });
+router.route("/:id").delete(async (req, res) => {
+  const id = req.params.id;
+  try {
+    const result = await deleteMovie(id);
+    return res.json(result);
+  } catch (error) {
+    return res.json(error);
+  }
+});
 
 module.exports = router;

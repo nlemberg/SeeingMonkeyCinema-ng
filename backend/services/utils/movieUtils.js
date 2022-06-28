@@ -1,8 +1,5 @@
-// const axios = require("axios");
 const Movie = require("../models/movieModel");
-// const {
-//   deleteMovieFromSubscriptions,
-// } = require("../services/subscriptionServices");
+const { deleteMovieFromSubscriptions } = require("../utils/subscriptionUtils");
 
 const getAllMovies = () => {
   return new Promise((resolve, reject) => {
@@ -53,27 +50,27 @@ const editMovie = (id, updatedMovie) => {
   });
 };
 
-// const deleteMovie = (id) => {
-//   return new Promise((resolve, reject) => {
-//     Movie.findByIdAndDelete(id, (err) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         try {
-//           deleteMovieFromSubscriptions(id);
-//         } catch (error) {
-//           console.log(error);
-//         }
-//         resolve("Movie Deleted successfully");
-//       }
-//     });
-//   });
-// };
+const deleteMovie = (id) => {
+  return new Promise((resolve, reject) => {
+    Movie.findByIdAndDelete(id, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        try {
+          deleteMovieFromSubscriptions(id);
+        } catch (error) {
+          console.log(error);
+        }
+        resolve("Movie Deleted successfully");
+      }
+    });
+  });
+};
 
 module.exports = {
   getAllMovies,
   getMovieById,
   addMovie,
   editMovie,
-  //   deleteMovie,
+  deleteMovie,
 };

@@ -12,15 +12,14 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
+import { moviesGetAll } from "../redux/actions/movieActions";
+import { membersGetAll } from "../redux/actions/memberActions";
+import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
 // import Employees from "./employees/employees";
 // import HelloUser from "./login/helloUser";
 // import AccessDenied from "./accessDenied";
 
 const Home = () => {
-  // let employeeManagement = null;
-  // if (sessionStorage.getItem("employee") === "Admin") {
-  //     employeeManagement = <Button variant="text" component={Link} to={`${props.match.url}/employees/allEmployees`} >Employees</Button>
-  // }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
@@ -29,7 +28,10 @@ const Home = () => {
     if (!user) {
       navigate("/login");
     }
-  });
+    dispatch(moviesGetAll());
+    dispatch(membersGetAll());
+    dispatch(subscriptionsGetAll());
+  }, [user, navigate, dispatch]);
 
   const onLogout = () => {
     dispatch(logout());
@@ -58,7 +60,14 @@ const Home = () => {
               <Button variant="text" component={Link} to="members/allMembers">
                 Members
               </Button>
-              {/* {employeeManagement} */}
+              <Button
+                variant="text"
+                component={Link}
+                to="employees/allEmployees"
+                disabled={user.username === "Admin" ? false : true}
+              >
+                Employees
+              </Button>
             </Box>
             <Box>{/* <HelloUser /> */}</Box>
             <Box>
