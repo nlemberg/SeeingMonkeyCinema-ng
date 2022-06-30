@@ -10,6 +10,10 @@ const theme = createTheme({
     secondary: {
       main: pink[600],
     },
+    action: {
+      disabledBackground: "rgba(56, 142, 90, 0.56)",
+      disabled: "#fffff",
+    },
   },
   components: {
     MuiPaper: {
@@ -49,7 +53,8 @@ const theme = createTheme({
             lineHeight: 1.6,
             fontWeight: "700",
             letterSpacing: "0.0075em",
-            color: "#0000008a",
+            color: "#8FBC8F",
+            // color: "#0000008a",
           },
           "&.txtLink": {
             textDecoration: "none",
@@ -59,7 +64,7 @@ const theme = createTheme({
           },
           "&.employee": {
             fontWeight: 500,
-            display: "inline",
+            // display: "inline",
           },
         },
       },

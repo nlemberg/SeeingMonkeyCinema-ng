@@ -12,7 +12,9 @@ const login = (userData) => async (dispatch) => {
     const { data: user } = await axios.post(url + "/login", userData);
 
     if (user) {
+      // localStorage.setItem("token", JSON.stringify(user.token));
       localStorage.setItem("user", JSON.stringify(user));
+
       dispatch({ type: "LOGIN_SUCCESS", payload: user });
     }
   } catch (error) {
@@ -20,6 +22,7 @@ const login = (userData) => async (dispatch) => {
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
+    // localStorage.removeItem("token");
     localStorage.removeItem("user");
     dispatch({ type: "LOGIN_FAIL", payload: message });
   }
@@ -27,6 +30,7 @@ const login = (userData) => async (dispatch) => {
 
 // log out
 const logout = () => async (dispatch) => {
+  // localStorage.removeItem("token");
   localStorage.removeItem("user");
   dispatch({ type: "LOGOUT_SUCCESS" });
 };

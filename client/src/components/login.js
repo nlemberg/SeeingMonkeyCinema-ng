@@ -16,9 +16,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, isError, isAuthenticated, message } = useSelector(
-    (state) => state.auth
-  );
+  const { user, isError, message } = useSelector((state) => state.auth);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,13 +26,26 @@ const Login = () => {
       alert(message);
       dispatch(reset());
     }
-  }, [isError, message, dispatch]);
-
-  useEffect(() => {
-    if (isAuthenticated || user) {
+    if (user) {
       navigate("/welcomeHome");
     }
-  }, [user, isAuthenticated, navigate]);
+    // return () => {
+    //   dispatch(reset());
+    // };
+  }, [isError, message, dispatch, user, navigate]);
+
+  // useEffect(() => {
+  //   if (isError) {
+  //     alert(message);
+  //     dispatch(reset());
+  //   }
+  // }, [isError, message, dispatch]);
+
+  // useEffect(() => {
+  //   if (isAuthenticated || user) {
+  //     navigate("/welcomeHome");
+  //   }
+  // }, [user, isAuthenticated, navigate]);
 
   const onSubmit = (e) => {
     e.preventDefault();

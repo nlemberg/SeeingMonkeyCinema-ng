@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -7,11 +7,12 @@ import {
   Button,
   IconButton,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/actions/authActions";
+import { logout, reset } from "../redux/actions/authActions";
 import { moviesGetAll } from "../redux/actions/movieActions";
 import { membersGetAll } from "../redux/actions/memberActions";
 import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
@@ -23,14 +24,20 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {
     if (!user) {
       navigate("/login");
+    } else {
+      dispatch(moviesGetAll());
+      dispatch(membersGetAll());
+      dispatch(subscriptionsGetAll());
+      setDisableBtn(user.username === "Admin" || "Guest" ? false : true);
     }
-    dispatch(moviesGetAll());
-    dispatch(membersGetAll());
-    dispatch(subscriptionsGetAll());
+    return () => {
+      dispatch(reset());
+    };
   }, [user, navigate, dispatch]);
 
   const onLogout = () => {
@@ -64,19 +71,22 @@ const Home = () => {
                 variant="text"
                 component={Link}
                 to="employees/allEmployees"
-                disabled={user.username === "Admin" ? false : true}
+                disabled={disableBtn}
               >
                 Employees
               </Button>
             </Box>
-            <Box>{/* <HelloUser /> */}</Box>
+            <Box>
+              <Typography className="hello">Hello, {user.firstName}</Typography>
+            </Box>
             <Box>
               <Tooltip title="Log Out">
                 <IconButton
                   component={Button}
                   onClick={onLogout}
                   edge="end"
-                  sx={{ marginLeft: 1 }}
+                  disableElevation
+                  sx={{ marginLeft: 1, color: "#8FBC8F" }}
                 >
                   <LogoutIcon />
                 </IconButton>
