@@ -87,7 +87,7 @@ const Login = () => {
             onSubmit={onSubmit}
           >
             <TextField
-              label="username"
+              label="Username"
               className="txtFldLogin"
               onChange={(e) => {
                 setUsername(e.target.value);

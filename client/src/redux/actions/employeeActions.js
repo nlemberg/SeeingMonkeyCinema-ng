@@ -25,9 +25,13 @@ const employeesAddNew = (newEmployee) => async (dispatch, getState) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const { data: success } = await axios.post(url, newEmployee, config);
+  const response = await axios.post(url, newEmployee, config);
   await dispatch(employeesGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Employee Added");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const employeesEdit = (employee) => async (dispatch, getState) => {
@@ -38,14 +42,13 @@ const employeesEdit = (employee) => async (dispatch, getState) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const { data: success } = await axios.put(
-    `${url}/${employee._id}`,
-    employee,
-    config
-  );
+  const response = await axios.put(`${url}/${employee._id}`, employee, config);
   await dispatch(employeesGetAll());
-  console.log(success);
-  alert(JSON.stringify(success));
+  if (response.status === 200) {
+    alert("Employee updated");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const employeesDelete = (id) => async (dispatch, getState) => {
@@ -56,9 +59,13 @@ const employeesDelete = (id) => async (dispatch, getState) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const { data: success } = await axios.delete(`${url}/${id}`, config);
+  const response = await axios.delete(`${url}/${id}`, config);
   await dispatch(employeesGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Employee deleted");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 export { employeesGetAll, employeesAddNew, employeesEdit, employeesDelete };

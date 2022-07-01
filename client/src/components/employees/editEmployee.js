@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -35,10 +35,11 @@ const EditEmployee = () => {
   // }
 
   const [newEmployee, setNewEmployee] = useState({
-    // _id: employeeToEdit._id,
+    _id: employeeToEdit._id,
     firstName: employeeToEdit.firstName,
     lastName: employeeToEdit.lastName,
     username: employeeToEdit.username,
+    password: employeeToEdit.password,
     permissions: {},
     createdAt: employeeToEdit.createdAt,
   });
