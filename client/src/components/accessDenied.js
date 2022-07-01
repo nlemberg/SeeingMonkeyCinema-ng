@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const AccessDenied = () => {
   return (
-    // <Container >
     <Box
       display="flex"
       flexDirection="column"
@@ -35,7 +34,6 @@ const AccessDenied = () => {
         </Tooltip>
       </Box>
     </Box>
-    // </Container>
   );
 };
 

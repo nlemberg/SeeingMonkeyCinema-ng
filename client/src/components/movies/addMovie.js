@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -16,7 +15,6 @@ const AddMovie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  // const history = useHistory();
   const [newMovie, setNewMovie] = useState({
     name: "",
     genres: [],
@@ -25,11 +23,6 @@ const AddMovie = () => {
   });
 
   const { name, genres, image, premiered } = newMovie;
-  // const [isValid, setIsValid] = useState(false);
-
-  // if (!sessionStorage.getItem("employeePermissions").includes("createMovies")) {
-  //     history.push("/home/access-denied")
-  // }
 
   useEffect(() => {
     if (!user.permissions.createMovies && !user.username === "Guest") {
@@ -50,22 +43,7 @@ const AddMovie = () => {
     };
     await dispatch(moviesAddNew(movieData));
     navigate("../allMovies");
-    // if (!newMovie.name || newMovie.genres.length === 0 || !newMovie.image.medium || !newMovie.premiered) {
-    //     alert("All Fields are required. Please fill out the form")
-    // } else {
-    //     setIsValid(!isValid);
-    // }
   };
-
-  // useEffect(() => {
-  //     async function addNew() {
-  //         if (isValid) {
-  //             await dispatch(moviesAddNew(newMovie))
-  //             history.push("/home/movies/allMovies")
-  //         }
-  //     }
-  //     addNew()
-  // }, [isValid, dispatch])
 
   return (
     <Box display="flex" justifyContent="center">

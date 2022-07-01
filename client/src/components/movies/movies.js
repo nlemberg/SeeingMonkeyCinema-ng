@@ -1,25 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-// import { Routes, Route, Link, useHistory } from "react-router-dom";
 import { Button, AppBar, Toolbar } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import { useSelector } from "react-redux";
-// import AddMovie from "./addMovie";
-// import EditMovie from "./editMovie";
 
 const Movies = () => {
-  // const history = useHistory()
-
-  // let addMovieLink = null;
-
-  // if (!sessionStorage.getItem("employeePermissions").includes("viewMovies")) {
-  //     history.push("/home/access-denied")
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("createMovies")) {
-  //     addMovieLink = <Button variant="text" component={Link} to={"/addMovie"} >Add Movie</Button>
-  //     // addMovieLink = <Button variant="text" component={Link} to={`${props.match.url}/addMovie`} >Add Movie</Button>
-  // }
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
@@ -38,7 +23,6 @@ const Movies = () => {
         <Toolbar>
           <LocalMoviesIcon className="appBarIcon" />
           <Button variant="text" component={Link} to="allMovies">
-            {/* <Button variant="text" component={Link} to="/home/movies/allMovies"> */}
             All Movies
           </Button>
           <Button
@@ -53,7 +37,6 @@ const Movies = () => {
           >
             Add Movie
           </Button>
-          {/* {addMovieLink} */}
         </Toolbar>
       </AppBar>
       <Outlet />

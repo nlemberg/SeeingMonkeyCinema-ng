@@ -6,7 +6,6 @@ const {
   editMovie,
   deleteMovie,
 } = require("../utils/movieUtils");
-// const { deleteMovieFromSubscriptions } = require("../services/subscriptionServices")
 
 const router = express.Router();
 

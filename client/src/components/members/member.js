@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { membersDelete } from "../../redux/actions/memberActions";
 import {
@@ -13,7 +12,6 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  //   List,
   Typography,
 } from "@mui/material";
 import MoviesWatched from "./moviesWatched";
@@ -29,9 +27,6 @@ const Member = (props) => {
   let memberId;
   let member;
   let navLink;
-
-  // let deleteButton = null;
-  // let editButton = null;
 
   if (id) {
     memberId = id;
@@ -49,14 +44,6 @@ const Member = (props) => {
       navigate(navLink);
     }
   };
-
-  // if (sessionStorage.getItem("employeePermissions").includes("deleteSubscriptions")) {
-  //     deleteButton = <Button onClick={deleteMember}>Delete</Button>
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("updateSubscriptions")) {
-  //     editButton = <Button component={Link} to={`/home/subscriptions/editMember/${memberId}`} >Edit</Button>
-  // }
 
   return (
     <Box display="flex" flexGrow={1} justifyContent="center">

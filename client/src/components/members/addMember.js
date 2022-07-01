@@ -15,26 +15,12 @@ const AddMember = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  // const history = useHistory()
   const [newMember, setNewMember] = useState({
     name: "",
     email: "",
     address: { city: "" },
   });
-  // const [isValid, setIsValid] = useState(false);
 
-  // if (!sessionStorage.getItem("employeePermissions").includes("createSubscriptions")) {
-  //     history.push("/home/access-denied")
-  // }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (!newMember.name || !newMember.email || !newMember.address.city) {
-  //     alert("All Fields are required. Please fill out the form");
-  //   } else {
-  //     setIsValid(!isValid);
-  //   }
-  // };
   const { name, email, address } = newMember;
 
   useEffect(() => {
@@ -56,26 +42,6 @@ const AddMember = () => {
     await dispatch(membersAddNew(memberData));
     navigate("../allMembers");
   };
-
-  // useEffect(() => {
-  //   async function addNew() {
-  //     if (isValid) {
-  //       await dispatch(membersAddNew(newMember));
-  //       navigate("../allMembers");
-  //     }
-  //   }
-  //   addNew();
-  // }, [isValid, dispatch, navigate]);
-
-  // useEffect(() => {
-  //   async function addNew() {
-  //     if (isValid) {
-  //       await dispatch(membersAddNew(newMember));
-  //       navigate("../allMembers");
-  //     }
-  //   }
-  //   addNew();
-  // }, [isValid, dispatch, navigate]);
 
   return (
     <Box display="flex" justifyContent="center">

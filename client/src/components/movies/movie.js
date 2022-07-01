@@ -14,7 +14,6 @@ import {
   List,
   Typography,
 } from "@mui/material";
-// import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Divider, Grid, List, Typography } from "@mui/material";
 import { moviesDelete } from "../../redux/actions/movieActions";
 import WhoWatchedThis from "./whoWatchedThis";
 
@@ -29,9 +28,6 @@ const Movie = (props) => {
   let movieId;
   let movie;
   let navLink;
-
-  // let deleteButton = null;
-  // let editButton = null;
 
   if (id) {
     movieId = id;
@@ -49,14 +45,6 @@ const Movie = (props) => {
       navigate(navLink);
     }
   };
-
-  // if (sessionStorage.getItem("employeePermissions").includes("deleteMovies")) {
-  //     deleteButton = <Button onClick={deleteMovie}>Delete</Button>
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("updateMovies")) {
-  //     editButton = <Button component={Link} to={`/home/movies/editMovie/${movieId}`} >Edit</Button>
-  // }
 
   return (
     <Box display="flex" justifyContent="center">

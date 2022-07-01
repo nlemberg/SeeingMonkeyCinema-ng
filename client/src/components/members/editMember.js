@@ -15,9 +15,6 @@ const EditMember = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const history = useHistory()
-
-  //   const [isValid, setIsValid] = useState(false);
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
 
@@ -29,10 +26,6 @@ const EditMember = () => {
     email: memberToEdit.email,
     address: { city: memberToEdit.address.city },
   });
-
-  // if (!sessionStorage.getItem("employeePermissions").includes("updateSubscriptions")) {
-  //     history.push("/home/access-denied")
-  // }
 
   const { name, email, address } = member;
 
@@ -54,21 +47,7 @@ const EditMember = () => {
     };
     await dispatch(membersEdit(memberData));
     navigate("../allMembers");
-    // if (!member.name || !member.email || !member.address.city) {
-    //     alert("All Fields are required. Please fill out the form")
-    // } else {
-    //     setIsValid(!isValid);
-    // }
   };
-
-  // useEffect(() => {
-  //     async function editMem() {
-  //     if (isValid) {
-  //         await dispatch(membersEdit(member))
-  //         history.push("/home/subscriptions/allMembers")
-  //     }}
-  //     editMem()
-  // }, [isValid, dispatch])
 
   return (
     <Box display="flex" justifyContent="center">

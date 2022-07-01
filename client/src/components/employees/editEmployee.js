@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -15,24 +14,15 @@ import {
   Typography,
 } from "@mui/material";
 import { employeesEdit } from "../../redux/actions/employeeActions";
-// import { employeeLoginsEdit } from "../../redux/actions/employeeLoginActions";
-// import { createCombinedEmployee } from "../../redux/actions/combinedEmployeeActions";
 
 const EditEmployee = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
-  // const { user } = useSelector((state) => state.auth);
-
-  // const history = useHistory();
   const employees = useSelector((state) => state.employees);
 
   const employeeToEdit = employees.find((employee) => employee._id === id);
-
-  // if (sessionStorage.getItem("employee") !== "Admin") {
-  //     history.push("/home/access-denied")
-  // }
 
   const [newEmployee, setNewEmployee] = useState({
     _id: employeeToEdit._id,
@@ -47,8 +37,6 @@ const EditEmployee = () => {
   const [tempPermissions, setTempPermissions] = useState(
     employeeToEdit.permissions
   );
-
-  // const [isValid, setIsValid] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,17 +57,6 @@ const EditEmployee = () => {
       navigate("../allEmployees");
     }
   };
-
-  // useEffect(() => {
-  //     async function editCombEmp() {
-  //         if (isValid) {
-  //             const newCombinedEmployee = await createCombinedEmployee(newEmployee, tempPermissions)
-  //             await dispatch(employeeLoginsEdit({...newCombinedEmployee}))
-  //             history.push("/home/employees/allEmployees")
-  //         }
-  //     }
-  //     editCombEmp()
-  // }, [isValid, dispatch])
 
   return (
     <Box display="flex" justifyContent="center">

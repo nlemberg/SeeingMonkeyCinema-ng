@@ -29,23 +29,7 @@ const Login = () => {
     if (user) {
       navigate("/welcomeHome");
     }
-    // return () => {
-    //   dispatch(reset());
-    // };
   }, [isError, message, dispatch, user, navigate]);
-
-  // useEffect(() => {
-  //   if (isError) {
-  //     alert(message);
-  //     dispatch(reset());
-  //   }
-  // }, [isError, message, dispatch]);
-
-  // useEffect(() => {
-  //   if (isAuthenticated || user) {
-  //     navigate("/welcomeHome");
-  //   }
-  // }, [user, isAuthenticated, navigate]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -108,19 +92,6 @@ const Login = () => {
             <Button onClick={loginAsGuest} variant="outlined" color="warning">
               Log in as Guest
             </Button>
-            {/* <Typography>
-              {" "}
-              New here?{" "}
-              {
-                <Typography
-                  className="txtLink"
-                  component={Link}
-                  to="/createAccount"
-                >
-                  Create account
-                </Typography>
-              }{" "}
-            </Typography> */}
           </Box>
         </Paper>
       </Box>

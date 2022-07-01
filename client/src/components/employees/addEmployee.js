@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useHistory } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -19,12 +18,6 @@ import { employeesAddNew } from "../../redux/actions/employeeActions";
 const AddEmployee = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const history = useHistory();
-
-  //   if (sessionStorage.getItem("employee") !== "Admin") {
-  //     history.push("/home/access-denied");
-  //   }
 
   const [newEmployee, setNewEmployee] = useState({
     firstName: "",
@@ -45,8 +38,6 @@ const AddEmployee = () => {
     deleteMovies: false,
   });
 
-  // const [isValid, setIsValid] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -66,17 +57,6 @@ const AddEmployee = () => {
       navigate("../allEmployees");
     }
   };
-
-  // useEffect(() => {
-  //     async function createNew() {
-  //         if (isValid) {
-  //             const newCombinedEmployee = await createCombinedEmployee(newEmployee, tempPermissions)
-  //             await dispatch(employeeLoginsAddNew(newCombinedEmployee))
-  //             history.push("/home/employees/allEmployees")
-  //         }
-  //     }
-  // createNew()
-  // }, [isValid])
 
   return (
     <Box display="flex" justifyContent="center">

@@ -16,15 +16,13 @@ import { logout, reset } from "../redux/actions/authActions";
 import { moviesGetAll } from "../redux/actions/movieActions";
 import { membersGetAll } from "../redux/actions/memberActions";
 import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
-// import Employees from "./employees/employees";
-// import HelloUser from "./login/helloUser";
-// import AccessDenied from "./accessDenied";
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [disableBtn, setDisableBtn] = useState(true);
+  const [helloUser, setHelloUser] = useState("");
 
   useEffect(() => {
     if (!user) {
@@ -34,6 +32,7 @@ const Home = () => {
       dispatch(membersGetAll());
       dispatch(subscriptionsGetAll());
       setDisableBtn(user.username === "Admin" || "Guest" ? false : true);
+      setHelloUser(user.firstName);
     }
     return () => {
       dispatch(reset());
@@ -56,12 +55,7 @@ const Home = () => {
                   <HomeIcon fontSize="large" htmlColor="white" />
                 </IconButton>
               </Tooltip>
-              <Button
-                variant="text"
-                component={Link}
-                to="movies/allMovies"
-                // to={`${props.match.url}/movies/allMovies`}
-              >
+              <Button variant="text" component={Link} to="movies/allMovies">
                 Movies
               </Button>
               <Button variant="text" component={Link} to="members/allMembers">
@@ -77,7 +71,7 @@ const Home = () => {
               </Button>
             </Box>
             <Box>
-              <Typography className="hello">Hello, {user.firstName}</Typography>
+              <Typography className="hello">Hello, {helloUser}</Typography>
             </Box>
             <Box>
               <Tooltip title="Log Out">

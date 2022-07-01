@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Box,
@@ -16,8 +15,6 @@ const EditMovie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const history = useHistory();
-  // const [isValid, setIsValid] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
   const movies = useSelector((state) => state.movies);
@@ -30,10 +27,6 @@ const EditMovie = () => {
     image: movieToEdit.image,
     premiered: movieToEdit.premiered,
   });
-
-  // if (!sessionStorage.getItem("employeePermissions").includes("updateMovies")) {
-  //     history.push("/home/access-denied")
-  // }
 
   const { name, genres, image, premiered } = movie;
 
@@ -56,22 +49,7 @@ const EditMovie = () => {
     };
     await dispatch(moviesEdit(movieData));
     navigate("../allMovies");
-    // if (!movie.name || !movie.genres || !movie.image.medium || !movie.premiered) {
-    //     alert("All Fields are required. Please fill out the form")
-    // } else {
-    //     setIsValid(!isValid);
-    // }
   };
-
-  // useEffect(() => {
-  //     async function editMov() {
-  //         if (isValid) {
-  //             await dispatch(moviesEdit(movie))
-  //             history.push("/home/movies/allMovies")
-  //         }
-  //     }
-  //     editMov()
-  // }, [isValid, dispatch])
 
   return (
     <Box display="flex" justifyContent="center">

@@ -4,24 +4,11 @@ import { Button, AppBar, Toolbar } from "@mui/material";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { employeesGetAll } from "../../redux/actions/employeeActions";
-// import AllEmployees from "./allEmployees";
-// import AddEmployee from "./addEmployee";
-// import EditEmployee from "./editEmployee"
 
-const Employees = (props) => {
-  //   const navigate = useNavigate();
-  //   const { user } = useSelector((state) => state.auth);
-
-  //   useEffect(() => {
-  //     if (user.username !== "Admin") {
-  //       alert("Only the system Admin is allowed to manage employees");
-  //       navigate("../welcomeHome");
-  //     }
-  //   }, [user, navigate]);
+const Employees = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //   const { user } = useSelector((state) => state.auth);
-  const { user, isError, message } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (user.username === "Admin") {
@@ -29,7 +16,7 @@ const Employees = (props) => {
     } else {
       navigate("/accessDenied");
     }
-  }, [isError, message, dispatch, user, navigate]);
+  }, [dispatch, user, navigate]);
 
   return (
     <>
