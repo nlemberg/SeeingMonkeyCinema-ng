@@ -80,7 +80,8 @@ const Home = () => {
                   onClick={onLogout}
                   edge="end"
                   disableElevation
-                  sx={{ marginLeft: 1, color: "#8FBC8F" }}
+                  disableRipple
+                  sx={{ marginLeft: 1, color: "#e0f2f1" }}
                 >
                   <LogoutIcon />
                 </IconButton>

@@ -24,12 +24,12 @@ const AccessDenied = () => {
       <Box display="flex" sx={{ marginTop: 5 }}>
         <Tooltip title="Movies">
           <IconButton component={Link} to="../movies/allMovies">
-            <LocalMoviesIcon className="mainPgIcon" />
+            <LocalMoviesIcon className="accessIcon" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Members">
           <IconButton component={Link} to="../members/allMembers">
-            <PersonPinIcon className="mainPgIcon" />
+            <PersonPinIcon className="accessIcon" />
           </IconButton>
         </Tooltip>
       </Box>

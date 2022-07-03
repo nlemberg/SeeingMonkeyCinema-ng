@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Box } from "@mui/material";
 import Home from "./home";
 import WelcomeHome from "./welcomeHome";
 import Movies from "./movies/movies";

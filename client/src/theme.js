@@ -1,17 +1,17 @@
 import { createTheme } from "@mui/material/styles";
-import green from "@mui/material/colors/green";
 import pink from "@mui/material/colors/pink";
+import teal from "@mui/material/colors/teal";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: green[700],
+      main: teal[500],
     },
     secondary: {
       main: pink[600],
     },
     action: {
-      disabledBackground: "rgba(56, 142, 90, 0.56)",
+      disabledBackground: teal[200],
       disabled: "#fffff",
     },
   },
@@ -37,7 +37,7 @@ const theme = createTheme({
             fontSize: "2.125rem",
             lineHeight: 1.235,
             letterSpacing: "0.00735em",
-            color: green[700],
+            color: teal[500],
             marginBottom: "1.6px",
             marginTop: "16px",
           },
@@ -45,16 +45,15 @@ const theme = createTheme({
             fontSize: "1.5rem",
             lineHeight: 1.334,
             letterSpacing: "0em",
-            color: green[700],
+            color: teal[500],
             marginBottom: "20px",
           },
           "&.hello": {
             fontSize: "1rem",
             lineHeight: 1.6,
-            fontWeight: "700",
-            letterSpacing: "0.0075em",
-            color: "#8FBC8F",
-            // color: "#0000008a",
+            fontWeight: "500",
+            letterSpacing: "0.0085em",
+            color: teal[50],
           },
           "&.txtLink": {
             textDecoration: "none",
@@ -64,8 +63,10 @@ const theme = createTheme({
           },
           "&.employee": {
             fontWeight: 500,
-            // display: "inline",
           },
+        },
+        button: {
+          fontSize: "0.8rem",
         },
       },
     },
@@ -74,11 +75,15 @@ const theme = createTheme({
         root: {
           "&.faceIcon": {
             fontSize: 45,
-            color: green[700],
+            color: teal[700],
           },
           "&.mainPgIcon": {
+            fontSize: 50,
+            color: teal[700],
+          },
+          "&.accessIcon": {
             fontSize: 100,
-            color: green[700],
+            color: teal[700],
           },
           "&.appBarIcon": {
             fontSize: 35, // = fontSize="large" property

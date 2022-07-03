@@ -29,17 +29,6 @@ const membersEditSubscription = (memberId, movie) => async (dispatch) => {
   alert(success);
 };
 
-// const membersDelete = (id) => async (dispatch) => {
-//   const response = await axios.delete(`${url}/${id}`);
-//   if (response.statusText === "OK") {
-//     await dispatch(membersGetAll());
-//     await dispatch(subscriptionsGetAll());
-//     alert(response.data);
-//   } else {
-//     console.log(response);
-//   }
-// };
-
 const membersDelete = (id) => async (dispatch) => {
   const { data: success } = await axios.delete(`${url}/${id}`);
   await dispatch(membersGetAll());
