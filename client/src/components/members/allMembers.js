@@ -15,7 +15,7 @@ const AllMembers = () => {
 
   return (
     <Container>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent="center">
         {member}
       </Grid>
     </Container>

@@ -161,7 +161,12 @@ const deleteEmployee = asyncHandler(async (req, res) => {
 // POST /employees/login
 // public
 const loginEmployee = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+  let { username, password } = req.body;
+
+  if (username === "Guest" && password === "") {
+    password =
+      process.env.LOGIN_AS_GUEST || require("../config/keys").LOGIN_AS_GUEST;
+  }
 
   //// check for employee username
   const employee = await Employee.findOne({ username });

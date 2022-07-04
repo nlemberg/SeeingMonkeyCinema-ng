@@ -1,5 +1,5 @@
 const Member = require("../models/memberModel");
-// const { deleteSubscription } = require("./subscriptionServices");
+const { deleteSubscription } = require("./subscriptionUtils");
 
 const getAllMembers = async () => {
   return new Promise((resolve, reject) => {
@@ -50,27 +50,28 @@ const editMember = (id, updatedMember) => {
   });
 };
 
-// const deleteMember = (id) => {
-//   return new Promise((resolve, reject) => {
-//     Member.findByIdAndDelete(id, (err) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         try {
-//           deleteSubscription(id)
-//         } catch (error) {
-//           console.log(error);
-//         }
-//         resolve("Member deleted successfully");
-//       }
-//     });
-//   });
-// };
+const deleteMember = (id) => {
+  return new Promise((resolve, reject) => {
+    Member.findByIdAndDelete(id, (err) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        try {
+          deleteSubscription(id);
+        } catch (error) {
+          console.log(error);
+        }
+        resolve("Member deleted successfully");
+      }
+    });
+  });
+};
 
 module.exports = {
   getAllMembers,
   getMemberByID,
   addMember,
   editMember,
-  //   deleteMember,
+  deleteMember,
 };

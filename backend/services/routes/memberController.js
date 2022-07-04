@@ -5,13 +5,12 @@ const {
   getMemberByID,
   addMember,
   editMember,
-  //   deleteMember,
+  deleteMember,
 } = require("../utils/memberUtils");
 const {
   findSubscriptionByMemberID,
   addOrEditSubscription,
 } = require("../utils/subscriptionUtils");
-const axios = require("axios");
 
 const router = express.Router();
 
@@ -78,14 +77,14 @@ router.route("/:id").put(async (req, res) => {
   }
 });
 
-// router.route("/:id").delete(async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const result = await deleteMember(id);
-//     return res.json(result);
-//   } catch (error) {
-//     return res.json(error);
-//   }
-// });
+router.route("/:id").delete(async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await deleteMember(id);
+    return res.json(result);
+  } catch (error) {
+    return res.json(error);
+  }
+});
 
 module.exports = router;

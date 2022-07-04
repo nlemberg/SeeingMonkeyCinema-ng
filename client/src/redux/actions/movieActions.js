@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { subscriptionsGetAll } from "./subscriptionActions";
+import { subscriptionsGetAll } from "./subscriptionActions";
 
 const url =
   process.env.NODE_ENV === "production"
@@ -23,12 +23,11 @@ const moviesEdit = (movie) => async (dispatch) => {
   alert(success);
 };
 
-// const moviesDelete = (id) => async (dispatch) => {
-//   const { data: success } = await axios.delete(`${url}/${id}`);
-//   await dispatch(moviesGetAll());
-//   await dispatch(subscriptionsGetAll());
-//   alert(success);
-// };
+const moviesDelete = (id) => async (dispatch) => {
+  const { data: success } = await axios.delete(`${url}/${id}`);
+  await dispatch(moviesGetAll());
+  await dispatch(subscriptionsGetAll());
+  alert(success);
+};
 
-export { moviesGetAll, moviesAddNew, moviesEdit };
-// export { moviesGetAll, moviesAddNew, moviesEdit, moviesDelete };
+export { moviesGetAll, moviesAddNew, moviesEdit, moviesDelete };

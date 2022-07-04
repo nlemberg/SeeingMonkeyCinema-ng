@@ -1,59 +1,88 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Typography, Box, Tooltip, IconButton } from "@mui/material";
+import { Typography, Box, IconButton } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
-// import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+import { useSelector } from "react-redux";
+import monkeys from "../images/monkeys1920.png";
 
 const WelcomeHome = () => {
-  //   let employeeIcon = null;
-  //   if (sessionStorage.getItem("employee") === "Admin") {
-  //     employeeIcon = (
-  //       <Tooltip title="Employees">
-  //         <IconButton component={Link} to="/home/employees/allEmployees">
-  //           <BadgeOutlinedIcon className="mainPgIcon" />
-  //         </IconButton>
-  //       </Tooltip>
-  //     );
-  //   }
+  const { user } = useSelector((state) => state.auth);
+  const [employeeIcon, setEmployeeIcon] = useState(null);
+
+  useEffect(() => {
+    if (user && (user.username === "Admin" || "Guest")) {
+      setEmployeeIcon(
+        <IconButton
+          aria-label="Employees"
+          component={Link}
+          to="../employees/allEmployees"
+          sx={{ display: "flex", flexDirection: "column", flexBasis: "33%" }}
+          disableRipple
+        >
+          <BadgeOutlinedIcon className="mainPgIcon" />
+          <Typography variant="button">Employees</Typography>
+        </IconButton>
+      );
+    }
+  }, [user]);
 
   return (
     <Box
       display="flex"
       flexDirection="column"
-      sx={{ alignItems: "center", textAlign: "center", padding: 5 }}
+      sx={{
+        alignItems: "center",
+        textAlign: "center",
+        padding: "48px",
+      }}
     >
-      <Typography variant="h4"> Welcome </Typography>
-      <Typography variant="h4" fontSize="100%">
-        {" "}
-        to the{" "}
+      <img
+        src={monkeys}
+        alt="Created by iirliinnaa from Pixabay"
+        height="250px"
+      />
+      {/* <Typography
+        variant="overline"
+        color="#00796b"
+        fontSize="60px"
+        marginTop={6}
+        marginBottom={6}
+      > */}
+      <Typography
+        variant="h2"
+        fontWeight="400"
+        fontSize="55px"
+        color="#003333"
+        marginTop={6}
+        marginBottom={6}
+      >
+        Seeing Monkey Cinema
       </Typography>
-      <Typography variant="h4" fontSize="280%">
-        {" "}
-        Seeing Monkey Cinema{" "}
-      </Typography>
-      <Typography variant="h4"> Management System </Typography>
-      <Typography variant="h4" fontSize="130%" marginY={4}>
-        {" "}
-        Where the movies are tv shows and the points don't matter{" "}
-      </Typography>
-      <Typography variant="h4" fontSize="100%" marginY={2}>
-        {" "}
-        Now where do you wanna go?{" "}
-      </Typography>
-      <Box display="flex">
-        <Tooltip title="Movies">
-          <IconButton component={Link} to="../movies/allMovies">
-            {/* <IconButton component={Link} to="/home/movies/allMovies"> */}
-            <LocalMoviesIcon className="mainPgIcon" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Members">
-          <IconButton component={Link} to="../members/allMembers">
-            <PersonPinIcon className="mainPgIcon" />
-          </IconButton>
-        </Tooltip>
-        {/* {employeeIcon} */}
+
+      <Box display="flex" minWidth="42%" justifyContent="space-around">
+        <IconButton
+          aria-label="Movies"
+          component={Link}
+          to="../movies/allMovies"
+          sx={{ display: "flex", flexDirection: "column", flexBasis: "33%" }}
+          disableRipple
+        >
+          <LocalMoviesIcon className="mainPgIcon" />
+          <Typography variant="button">Movies</Typography>
+        </IconButton>
+        <IconButton
+          aria-label="Members"
+          component={Link}
+          to="../members/allMembers"
+          sx={{ display: "flex", flexDirection: "column", flexBasis: "33%" }}
+          disableRipple
+        >
+          <PersonPinIcon className="mainPgIcon" />
+          <Typography variant="button">Members</Typography>
+        </IconButton>
+        {employeeIcon}
       </Box>
     </Box>
   );

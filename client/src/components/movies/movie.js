@@ -1,54 +1,50 @@
 import React from "react";
-import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Box,
+  Button,
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
-  //   Divider,
+  Divider,
   Grid,
-  //   List,
+  List,
   Typography,
 } from "@mui/material";
-// import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Divider, Grid, List, Typography } from "@mui/material";
-// import { moviesDelete } from "../../redux/actions/movieActions";
-// import WhoWatchedThis from "./whoWatchedThis";
+import { moviesDelete } from "../../redux/actions/movieActions";
+import WhoWatchedThis from "./whoWatchedThis";
 
 const Movie = (props) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
   const movies = useSelector((state) => state.movies);
   const { id } = useParams();
+
   let movieId;
   let movie;
-
-  // let deleteButton = null;
-  // let editButton = null;
+  let navLink;
 
   if (id) {
     movieId = id;
     movie = movies.find((movie) => movie._id === id);
+    navLink = "../allMovies";
   } else if (props.movie) {
     movie = props.movie;
     movieId = props.movie._id;
+    navLink = ".";
   }
 
-  // const deleteMovie = () => {
-  //     if (window.confirm("Are you sure you want to delete this movie?")) {
-  //         dispatch(moviesDelete(movieId))
-  //     }
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("deleteMovies")) {
-  //     deleteButton = <Button onClick={deleteMovie}>Delete</Button>
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("updateMovies")) {
-  //     editButton = <Button component={Link} to={`/home/movies/editMovie/${movieId}`} >Edit</Button>
-  // }
+  const deleteMovie = () => {
+    if (window.confirm("Are you sure you want to delete this movie?")) {
+      dispatch(moviesDelete(movieId));
+      navigate(navLink);
+    }
+  };
 
   return (
     <Box display="flex" justifyContent="center">
@@ -70,16 +66,42 @@ const Movie = (props) => {
                 </Typography>
               </CardActionArea>
               <Typography>Genres: {movie.genres.join(", ")}</Typography>
-              {/* <Divider />
-                        <Typography variant="subtitle1" fontWeight="500" >Subscribers:</Typography>
-                        <List sx={{ overflow: "auto", maxHight: "50%", position: "relative", margin: 0, padding: 0 }} >
-                            <WhoWatchedThis movieId={movieId} />
-                        </List> */}
+              <Divider />
+              <Typography variant="subtitle1" fontWeight="500">
+                Subscribers:
+              </Typography>
+              <List
+                sx={{
+                  overflow: "auto",
+                  maxHight: "50%",
+                  position: "relative",
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                <WhoWatchedThis movieId={movieId} />
+              </List>
             </CardContent>
           </Grid>
           <Grid item xs={12} alignSelf="flex-end">
             <CardActions>
-              {/* {deleteButton}{editButton}             */}
+              <Button
+                onClick={deleteMovie}
+                disabled={user.permissions.deleteMovies ? false : true}
+              >
+                Delete
+              </Button>
+              <Button
+                component={Link}
+                to={`../editMovie/${movieId}`}
+                disabled={
+                  user.username === "Guest" || user.permissions.updateMovies
+                    ? false
+                    : true
+                }
+              >
+                Edit
+              </Button>
             </CardActions>
           </Grid>
         </Grid>

@@ -34,7 +34,7 @@ const MoviesWatched = (props) => {
           <ListItem
             key={el.movieID + "watched"}
             component={Link}
-            to={`/home/movies/${el.movieID}`}
+            to={`/../../movies/${el.movieID}`}
             disablePadding
           >
             <ListItemText primary={`${movie.name}, ${movieDate}`} />

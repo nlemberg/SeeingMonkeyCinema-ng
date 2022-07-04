@@ -25,7 +25,6 @@ const employeeSchema = new Schema(
       type: Object,
       required: [true, "Please add permission(s)"],
     },
-    // createdAt: { type: Date, immutable: true }
   },
   { timestamps: true }
 );

@@ -29,17 +29,17 @@ const membersEditSubscription = (memberId, movie) => async (dispatch) => {
   alert(success);
 };
 
-// const membersDelete = (id) => async (dispatch) => {
-//     const { data: success } = await axios.delete(`${url}/${id}`)
-//     await dispatch(membersGetAll())
-//     await dispatch(subscriptionsGetAll())
-//     alert(success)
-// }
+const membersDelete = (id) => async (dispatch) => {
+  const { data: success } = await axios.delete(`${url}/${id}`);
+  await dispatch(membersGetAll());
+  await dispatch(subscriptionsGetAll());
+  alert(success);
+};
 
 export {
   membersGetAll,
   membersAddNew,
   membersEdit,
   membersEditSubscription,
-  //   membersDelete,
+  membersDelete,
 };

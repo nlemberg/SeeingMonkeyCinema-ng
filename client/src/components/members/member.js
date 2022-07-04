@@ -1,55 +1,49 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { useDispatch, useSelector } from "react-redux";
-// import { membersDelete } from "../../redux/actions/memberActions";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { membersDelete } from "../../redux/actions/memberActions";
 import {
   Avatar,
   Box,
-  //   Button,
+  Button,
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardHeader,
   Divider,
-  //   List,
   Typography,
 } from "@mui/material";
 import MoviesWatched from "./moviesWatched";
 
 const Member = (props) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const members = useSelector((state) => state.members);
+  const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
 
   let memberId;
   let member;
-
-  // let deleteButton = null;
-  // let editButton = null;
+  let navLink;
 
   if (id) {
     memberId = id;
     member = members.find((member) => member._id === id);
+    navLink = "../allMembers";
   } else if (props.member) {
     member = props.member;
     memberId = props.member._id;
+    navLink = ".";
   }
 
-  // const deleteMember = () => {
-  //     if (window.confirm("Are you sure you want to delete this member?")) {
-  //         dispatch(membersDelete(memberId))
-  //     }
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("deleteSubscriptions")) {
-  //     deleteButton = <Button onClick={deleteMember}>Delete</Button>
-  // }
-
-  // if (sessionStorage.getItem("employeePermissions").includes("updateSubscriptions")) {
-  //     editButton = <Button component={Link} to={`/home/subscriptions/editMember/${memberId}`} >Edit</Button>
-  // }
+  const deleteMember = () => {
+    if (window.confirm("Are you sure you want to delete this member?")) {
+      dispatch(membersDelete(memberId));
+      navigate(navLink);
+    }
+  };
 
   return (
     <Box display="flex" flexGrow={1} justifyContent="center">
@@ -92,7 +86,24 @@ const Member = (props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            {/* {deleteButton}{editButton}             */}
+            <Button
+              onClick={deleteMember}
+              disabled={user.permissions.deleteSubscriptions ? false : true}
+            >
+              Delete
+            </Button>
+            <Button
+              component={Link}
+              to={`../editMember/${memberId}`}
+              disabled={
+                user.username === "Guest" ||
+                user.permissions.updateSubscriptions
+                  ? false
+                  : true
+              }
+            >
+              Edit
+            </Button>
           </CardActions>
         </Box>
         <Divider />

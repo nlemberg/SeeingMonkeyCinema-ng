@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   Box,
   AppBar,
@@ -7,18 +7,42 @@ import {
   Button,
   IconButton,
   Tooltip,
+  Typography,
 } from "@mui/material";
-// import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
-// import Employees from "./employees/employees";
-// import HelloUser from "./login/helloUser";
-// import AccessDenied from "./accessDenied";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, reset } from "../redux/actions/authActions";
+import { moviesGetAll } from "../redux/actions/movieActions";
+import { membersGetAll } from "../redux/actions/memberActions";
+import { subscriptionsGetAll } from "../redux/actions/subscriptionActions";
 
 const Home = () => {
-  // let employeeManagement = null;
-  // if (sessionStorage.getItem("employee") === "Admin") {
-  //     employeeManagement = <Button variant="text" component={Link} to={`${props.match.url}/employees/allEmployees`} >Employees</Button>
-  // }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const [disableBtn, setDisableBtn] = useState(true);
+  const [helloUser, setHelloUser] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      dispatch(moviesGetAll());
+      dispatch(membersGetAll());
+      dispatch(subscriptionsGetAll());
+      setDisableBtn(user.username === "Admin" || "Guest" ? false : true);
+      setHelloUser(user.firstName);
+    }
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, dispatch]);
+
+  const onLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
 
   return (
     <>
@@ -31,24 +55,37 @@ const Home = () => {
                   <HomeIcon fontSize="large" htmlColor="white" />
                 </IconButton>
               </Tooltip>
-              <Button
-                variant="text"
-                component={Link}
-                to="movies/allMovies"
-                // to={`${props.match.url}/movies/allMovies`}
-              >
+              <Button variant="text" component={Link} to="movies/allMovies">
                 Movies
               </Button>
               <Button variant="text" component={Link} to="members/allMembers">
                 Members
               </Button>
-              {/* {employeeManagement} */}
+              <Button
+                variant="text"
+                component={Link}
+                to="employees/allEmployees"
+                disabled={disableBtn}
+              >
+                Employees
+              </Button>
             </Box>
-            <Box>{/* <HelloUser /> */}</Box>
             <Box>
-              {/* <Tooltip title="Log Out" >
-                                <IconButton component={Link} to="/" edge="end" sx={{ marginLeft: 1 }} ><LogoutIcon/></IconButton>
-                            </Tooltip> */}
+              <Typography className="hello">Hello, {helloUser}</Typography>
+            </Box>
+            <Box>
+              <Tooltip title="Log Out">
+                <IconButton
+                  component={Button}
+                  onClick={onLogout}
+                  edge="end"
+                  disableElevation
+                  disableRipple
+                  sx={{ marginLeft: 1, color: "#e0f2f1" }}
+                >
+                  <LogoutIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
           </Toolbar>
         </AppBar>
