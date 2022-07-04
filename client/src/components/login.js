@@ -9,7 +9,8 @@ import {
   Button,
   Box,
 } from "@mui/material";
-import FaceIcon from "@mui/icons-material/Face";
+import monkeys from "../images/monkeys1920.png";
+
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -60,9 +61,20 @@ const Login = () => {
         }}
       >
         <Paper className="paperLogin">
-          <FaceIcon className="faceIcon" />
-          <Typography className="welcome"> Welcome, </Typography>
-          <Typography className="stranger"> Stranger </Typography>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            bgcolor="#e0f2f1"
+            paddingBottom="16px"
+            borderRadius="4px 4px 0 0"
+          >
+            <Typography variant="overline" color="#00796b" fontSize="20px">
+              Seeing Monkey Cinema
+            </Typography>
+            <img src={monkeys} alt="Seeing Monkey" height="62px" />
+          </Box>
+          <Typography className="stranger"> Welcome, Stranger </Typography>
           <Box
             display="flex"
             flexDirection="column"

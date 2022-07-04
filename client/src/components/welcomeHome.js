@@ -43,7 +43,21 @@ const WelcomeHome = () => {
         alt="Created by iirliinnaa from Pixabay"
         height="250px"
       />
-      <Typography variant="h2" marginTop={6} marginBottom={6}>
+      {/* <Typography
+        variant="overline"
+        color="#00796b"
+        fontSize="60px"
+        marginTop={6}
+        marginBottom={6}
+      > */}
+      <Typography
+        variant="h2"
+        fontWeight="400"
+        fontSize="55px"
+        color="#003333"
+        marginTop={6}
+        marginBottom={6}
+      >
         Seeing Monkey Cinema
       </Typography>
 

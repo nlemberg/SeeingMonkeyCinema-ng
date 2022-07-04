@@ -23,7 +23,7 @@ const theme = createTheme({
       styleOverrides: {
         elevation4: {
           "&.paperLogin": {
-            padding: 32,
+            paddingBottom: 32,
             textAlign: "center",
             width: "max-content",
           },
@@ -47,6 +47,8 @@ const theme = createTheme({
             letterSpacing: "0em",
             color: teal[600],
             marginBottom: "20px",
+            marginTop: "28px",
+            fontWeight: 300,
           },
           "&.hello": {
             fontSize: "1rem",
@@ -112,8 +114,8 @@ const theme = createTheme({
           "&.txtFldLogin": {
             marginTop: "8px",
             marginBottom: "8px",
-            marginLeft: "50px",
-            marginRight: "50px",
+            marginLeft: "80px",
+            marginRight: "80px",
           },
         },
       },
@@ -136,7 +138,7 @@ const theme = createTheme({
             display: "flex",
             width: "fit-content",
             marginTop: "16px",
-            marginBottom: "24px",
+            marginBottom: "4px",
             backgroundColor: teal[700],
           },
         },
