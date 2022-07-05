@@ -14,7 +14,7 @@ const Employees = () => {
     if (user.username === "Admin") {
       dispatch(employeesGetAll());
     } else if (user.username === "Guest") {
-      navigate("./sample");
+      navigate("./demo");
     } else {
       navigate("/accessDenied");
     }

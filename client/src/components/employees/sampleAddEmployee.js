@@ -53,13 +53,18 @@ const AddEmployee = () => {
 
   return (
     <>
-      <Alert severity="warning" sx={{ margin: 2 }}>
-        Only system admins can view and manage employees. But, in case you're
-        curious, here's what adding a new employee looks like!
+      <Alert
+        variant="filled"
+        severity="warning"
+        sx={{ margin: 3, textJustify: "center" }}
+      >
+        This is a demo. Only system admins can access ALL EMPLOYEES and ADD
+        EMPLOYEE components. But, in case you're curious, here's what adding a
+        new employee looks like!
       </Alert>
       <Box display="flex" justifyContent="center">
         <Card className="addOrEdit">
-          <CardHeader title="Add New Employee" />
+          <CardHeader title="Add Employee (Demo)" />
           <CardContent component="form" onSubmit={handleSubmit}>
             <Box display="flex" flexDirection="column">
               <TextField

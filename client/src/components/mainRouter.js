@@ -43,7 +43,7 @@ const MainRouter = () => {
           <Route path="allEmployees" element={<AllEmployees />} />
           <Route path=":id" element={<Employee />} />
           <Route path="addEmployee" element={<AddEmployee />} />
-          <Route path="sample" element={<SampleAddEmployee />} />
+          <Route path="demo" element={<SampleAddEmployee />} />
           <Route path="editEmployee/:id" element={<EditEmployee />} />
         </Route>
       </Route>
