@@ -28,7 +28,7 @@ const EditMovie = () => {
     premiered: movieToEdit.premiered,
   });
 
-  const { name, genres, image, premiered } = movie;
+  const { _id, name, genres, image, premiered } = movie;
 
   useEffect(() => {
     if (!user.permissions.updateMovies && !user.username === "Guest") {
@@ -42,6 +42,7 @@ const EditMovie = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const movieData = {
+      _id,
       name,
       genres,
       image,

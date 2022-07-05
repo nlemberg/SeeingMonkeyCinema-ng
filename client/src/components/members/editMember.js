@@ -27,7 +27,7 @@ const EditMember = () => {
     address: { city: memberToEdit.address.city },
   });
 
-  const { name, email, address } = member;
+  const { _id, name, email, address } = member;
 
   useEffect(() => {
     if (!user.permissions.updateSubscriptions && !user.username === "Guest") {
@@ -41,6 +41,7 @@ const EditMember = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const memberData = {
+      _id,
       name,
       email,
       address,

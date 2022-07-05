@@ -36,6 +36,7 @@ const WelcomeHome = () => {
         alignItems: "center",
         textAlign: "center",
         padding: "48px",
+        paddingBottom: "32px",
       }}
     >
       <img
@@ -43,13 +44,6 @@ const WelcomeHome = () => {
         alt="Created by iirliinnaa from Pixabay"
         height="250px"
       />
-      {/* <Typography
-        variant="overline"
-        color="#00796b"
-        fontSize="60px"
-        marginTop={6}
-        marginBottom={6}
-      > */}
       <Typography
         variant="h2"
         fontWeight="400"

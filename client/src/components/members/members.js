@@ -10,10 +10,11 @@ const Members = () => {
 
   useEffect(() => {
     if (!user.permissions.viewSubscriptions) {
-      alert(
-        "Oops. You don't have permission to view this page. Please contact your system Admin"
-      );
-      navigate("../welcomeHome");
+      //   alert(
+      //     "Oops. You don't have permission to view this page. Please contact your system Admin"
+      //   );
+      //   navigate("../welcomeHome");
+      navigate("../accessDenied");
     }
   }, [user, navigate]);
 

@@ -12,28 +12,44 @@ const membersGetAll = () => async (dispatch) => {
 };
 
 const membersAddNew = (newMember) => async (dispatch) => {
-  const { data: success } = await axios.post(url, newMember);
+  const response = await axios.post(url, newMember);
   await dispatch(membersGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Member added");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const membersEdit = (member) => async (dispatch) => {
-  const { data: success } = await axios.put(`${url}/${member._id}`, member);
+  const response = await axios.put(`${url}/${member._id}`, member);
   await dispatch(membersGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Member updated");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const membersEditSubscription = (memberId, movie) => async (dispatch) => {
-  const { data: success } = await axios.post(`${url}/${memberId}`, movie);
+  const response = await axios.post(`${url}/${memberId}`, movie);
   await dispatch(subscriptionsGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Subscription updated");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const membersDelete = (id) => async (dispatch) => {
-  const { data: success } = await axios.delete(`${url}/${id}`);
+  const response = await axios.delete(`${url}/${id}`);
   await dispatch(membersGetAll());
   await dispatch(subscriptionsGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Member deleted");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 export {

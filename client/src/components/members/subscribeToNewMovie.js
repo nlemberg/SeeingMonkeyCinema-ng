@@ -52,6 +52,7 @@ const SubscribeToNewMovie = ({ watchedIdsArr, memberId, callback }) => {
         <TextField
           select
           label="Select Movie"
+          value={movieID}
           onChange={(e) =>
             setMovieToWatch({ ...movieToWatch, movieID: e.target.value })
           }
@@ -61,10 +62,10 @@ const SubscribeToNewMovie = ({ watchedIdsArr, memberId, callback }) => {
         <TextField
           type="date"
           label="Date"
+          value={dateWatched}
           onChange={(e) =>
             setMovieToWatch({ ...movieToWatch, dateWatched: e.target.value })
           }
-          defaultValue={new Date().toISOString().slice(0, 10)}
         />
         <Button
           type="submit"
