@@ -9,7 +9,9 @@ const Movies = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    navigate("../accessDenied");
+    if (!user.permissions.viewMovies) {
+      navigate("../accessDenied");
+    }
   }, [user, navigate]);
 
   return (
