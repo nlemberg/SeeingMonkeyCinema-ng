@@ -9,12 +9,6 @@ const Movies = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    // if (!user.permissions.viewMovies) {
-    //   alert(
-    //     "Oops. You don't have permission to view this page. Please contact your system Admin"
-    //   );
-    //   navigate("../welcomeHome");
-    // }
     navigate("../accessDenied");
   }, [user, navigate]);
 
