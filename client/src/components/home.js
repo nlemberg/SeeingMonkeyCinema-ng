@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
   Typography,
+  Container,
 } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
@@ -45,7 +46,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <Container disableGutters maxWidth="false" sx={{ paddingBottom: 2 }}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar sx={{ backgroundColor: "primary.dark" }}>
           <Toolbar>
@@ -91,7 +92,7 @@ const Home = () => {
         </AppBar>
       </Box>
       <Outlet />
-    </>
+    </Container>
   );
 };
 

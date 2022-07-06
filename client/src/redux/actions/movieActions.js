@@ -12,22 +12,34 @@ const moviesGetAll = () => async (dispatch) => {
 };
 
 const moviesAddNew = (newMovie) => async (dispatch) => {
-  const { data: success } = await axios.post(url, newMovie);
+  const response = await axios.post(url, newMovie);
   await dispatch(moviesGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Movie added");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const moviesEdit = (movie) => async (dispatch) => {
-  const { data: success } = await axios.put(`${url}/${movie._id}`, movie);
+  const response = await axios.put(`${url}/${movie._id}`, movie);
   await dispatch(moviesGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Movie updated successfully");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 const moviesDelete = (id) => async (dispatch) => {
-  const { data: success } = await axios.delete(`${url}/${id}`);
+  const response = await axios.delete(`${url}/${id}`);
   await dispatch(moviesGetAll());
   await dispatch(subscriptionsGetAll());
-  alert(success);
+  if (response.status === 200) {
+    alert("Movie deleted");
+  } else {
+    alert(JSON.stringify(response.statusText));
+  }
 };
 
 export { moviesGetAll, moviesAddNew, moviesEdit, moviesDelete };

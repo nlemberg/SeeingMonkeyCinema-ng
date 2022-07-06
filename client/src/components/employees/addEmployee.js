@@ -270,7 +270,7 @@ const AddEmployee = () => {
             </Box>
           </Box>
           <Box display="flex" justifyContent="center" padding={2}>
-            <Button component={Link} to="../allEmployees">
+            <Button component={Link} to={"../allEmployees"}>
               Cancel
             </Button>
             <Button type="submit">Save</Button>

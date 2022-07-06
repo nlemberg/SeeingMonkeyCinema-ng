@@ -19,6 +19,7 @@ import Employee from "./employees/employee";
 import AccessDenied from "./accessDenied";
 import AddEmployee from "./employees/addEmployee";
 import EditEmployee from "./employees/editEmployee";
+import SampleAddEmployee from "./employees/sampleAddEmployee";
 
 const MainRouter = () => {
   return (
@@ -42,6 +43,7 @@ const MainRouter = () => {
           <Route path="allEmployees" element={<AllEmployees />} />
           <Route path=":id" element={<Employee />} />
           <Route path="addEmployee" element={<AddEmployee />} />
+          <Route path="demo" element={<SampleAddEmployee />} />
           <Route path="editEmployee/:id" element={<EditEmployee />} />
         </Route>
       </Route>

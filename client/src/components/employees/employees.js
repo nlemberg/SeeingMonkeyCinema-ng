@@ -13,6 +13,8 @@ const Employees = () => {
   useEffect(() => {
     if (user.username === "Admin") {
       dispatch(employeesGetAll());
+    } else if (user.username === "Guest") {
+      navigate("./demo");
     } else {
       navigate("/accessDenied");
     }
