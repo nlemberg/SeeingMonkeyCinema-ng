@@ -2,7 +2,8 @@ const axios = require("axios");
 
 const serverURL =
   process.env.NODE_ENV === "production"
-    ? "https://smc-services-dev.herokuapp.com"
+    ? // ? "https://smc-services-dev.herokuapp.com"
+      "https://attractive-ring-tuna.cyclic.app"
     : "http://localhost:8000";
 
 const membersURL = "https://jsonplaceholder.typicode.com/users";
