@@ -2,7 +2,8 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://smc-services-dev.herokuapp.com/subscriptions"
+    ? // ? "https://smc-services-dev.herokuapp.com/subscriptions"
+      "https://attractive-ring-tuna.cyclic.app/subscriptions"
     : "http://localhost:8000/subscriptions";
 
 const subscriptionsGetAll = () => async (dispatch) => {

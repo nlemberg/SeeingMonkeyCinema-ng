@@ -3,7 +3,8 @@ import { subscriptionsGetAll } from "./subscriptionActions";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://smc-services-dev.herokuapp.com/movies"
+    ? // ? "https://smc-services-dev.herokuapp.com/movies"
+      "https://attractive-ring-tuna.cyclic.app/movies"
     : "http://localhost:8000/movies";
 
 const moviesGetAll = () => async (dispatch) => {
