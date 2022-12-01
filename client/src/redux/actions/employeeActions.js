@@ -2,9 +2,9 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? // ? "https://smc-services-dev.herokuapp.com/employees"
-      "https://attractive-ring-tuna.cyclic.app/employees"
-    : "http://localhost:8000/employees";
+    ? "https://smc-services-dev.herokuapp.com/employees"
+    : // ?  "https://attractive-ring-tuna.cyclic.app/employees"
+      "http://localhost:8000/employees";
 
 const employeesGetAll = () => async (dispatch, getState) => {
   const { token } = getState().auth.user;
