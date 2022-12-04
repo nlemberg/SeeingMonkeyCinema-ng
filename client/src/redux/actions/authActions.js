@@ -2,9 +2,8 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://smc-services-dev.herokuapp.com/employees"
-    : // ?  "https://attractive-ring-tuna.cyclic.app/employees"
-      "http://localhost:8000/employees";
+    ? "https://seeing-monkey-cinema.onrender.com/employees"
+    : "http://localhost:8000/employees";
 
 // login
 const login = (userData) => async (dispatch) => {
