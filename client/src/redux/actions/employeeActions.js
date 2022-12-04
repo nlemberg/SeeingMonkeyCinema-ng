@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://seeing-monkey-cinema.onrender.com/employees"
+    ? "https://attractive-ring-tuna.cyclic.app/employees"
     : "http://localhost:8000/employees";
 
 const employeesGetAll = () => async (dispatch, getState) => {

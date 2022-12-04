@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const serverURL =
   process.env.NODE_ENV === "production"
-    ? "https://seeing-monkey-cinema.onrender.com"
+    ? "https://attractive-ring-tuna.cyclic.app"
     : "http://localhost:8000";
 
 const membersURL = "https://jsonplaceholder.typicode.com/users";
