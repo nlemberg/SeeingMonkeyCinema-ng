@@ -3,9 +3,8 @@ import { subscriptionsGetAll } from "./subscriptionActions";
 
 const url =
   process.env.NODE_ENV === "production"
-    ? "https://smc-services-dev.herokuapp.com/movies"
-    : // ?  "https://attractive-ring-tuna.cyclic.app/movies"
-      "http://localhost:8000/movies";
+    ? "https://seeing-monkey-cinema.onrender.com/movies"
+    : "http://localhost:8000/movies";
 
 const moviesGetAll = () => async (dispatch) => {
   const { data: movies } = await axios.get(url);
